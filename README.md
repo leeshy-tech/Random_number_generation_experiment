@@ -1,0 +1,2 @@
+# Random_number_generation_experiment
+随机变量与随机过程产生实验
