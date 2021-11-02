@@ -43,8 +43,8 @@ double xiaoshu (double x){
 }
 
 /*
-    功能：用线性同余法生成[0,1]随机数
-    思路：利用递推式x(n) = A*x(n-1) mod M，返回x(seed)/M作为01随机数
+    功能：用线性同余法生成(0,1)均匀分布随机数
+    思路：利用递推式x(n) = A*x(n-1) mod M，返回x(seed)/M作为(0,1)均匀分布随机数
 */
 double linear_congruential_method(long seed){
     ul A = 16807,M = 2147483647;
