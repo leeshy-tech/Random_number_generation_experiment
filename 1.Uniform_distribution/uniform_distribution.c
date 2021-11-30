@@ -19,7 +19,7 @@
     *           3> 此程序如果用c++写的话一些地方可以简练一下，但是写到这里已经花费很长时间并且实现功能了，故作罢。
     *           4> matlab与c语言科学计数法的格式是一样的，C语言生成的小数可以直接给matlab处理，所以不用特别设置data文件里的小数位数及格式。
     *
-    * @version  final  2021/10/31
+    * @version  final  2021/11/30
     *
     * @date     2021/10/21 星期四
 */ 
@@ -30,7 +30,7 @@
 #include "../mt19937ar.sep/mt19937ar.h"
 
 #define ul unsigned long//用来偷懒的宏定义
-#define ll long long
+#define ull unsigned long long
 
 #define data_file "..\\data\\uniform_distribution.txt"
 
@@ -73,10 +73,10 @@ double linear_congruential_method(long seed){
 
 */
 double MRG32k3a(long seed){
-    ll A = 1403580,B = 810728,C = 527612,D = 1370589;
-    ll m1 = 4294967087,m2 = 4294944443;
-    ll X[4] = {1,1,1,0},Y[4] = {1,1,1,0};
-    ll xn,yn;
+    ull A = 1403580,B = 810728,C = 527612,D = 1370589;
+    ull m1 = 4294967087,m2 = 4294944443;
+    ull X[4] = {1,2,3,0},Y[4] = {1,1,1,0};
+    ull xn,yn;
     if (seed<=3) {
         xn = X[seed-1];yn = Y[seed-1];
     }
@@ -99,8 +99,7 @@ double MRG32k3a(long seed){
     }
 
     double rand01;
-    rand01 = xiaoshu(llabs(xn)/(double)m1+llabs(yn)/(double)m2);
-    //rand01 = ((xn>yn)  ?  (xn-yn+m1)/((double)m1+1.0)  :  (yn-xn)/((double)m1+1.0));
+    rand01 = ((xn<=yn)  ?  (xn-yn+m1)/((double)m1+1.0)  :  (xn-yn)/((double)m1+1.0));
     return rand01;
 }
 

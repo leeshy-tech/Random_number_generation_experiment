@@ -27,7 +27,7 @@ f(x)=\left\{\begin{array}{c}
 0, \text { else }
 \end{array}\right.
 $$
-累积分布函数为：
+累积分布函数为：  
 $$
 F(x)=\left\{\begin{array}{c}
 0, x<a \\
@@ -70,7 +70,7 @@ double genrand_res53(void);
 计算递推式   
 x(n) = { A*x(n-2)-B*x(n-3) } mod m1  
 y(n) = { C*y(n-2)-D*y(n-3) } mod m2  
-输出随机数为：
+输出随机数为：  
 $$
 Un=\left\{\begin{array}{c}
 \frac{xn-yn+m1}{m1+1}, xn \leq yn \\
@@ -103,7 +103,7 @@ double MRG32k3a(long seed){
     return rand01;
 }
 ```
-但是根据这个算式得出的数据经matlab分析与预期相差的很远，所以我更改了随机数的算式，得出了一些比较好的数据，更改的算式是：
+但是根据这个算式得出的数据经matlab分析与预期相差的很远，所以我更改了随机数的算式，得出了一些比较好的数据，更改的算式是：  
 $$
 \left\{\frac{X(n)}{m1}+\frac{Y(n)}{m2}\right\} \bmod 1
 $$
@@ -127,7 +127,7 @@ $$
 实验内容：  
 以Mersenne Twister随机数产生器为基础产生服从Pareto分布的随机变量，数据导入到Matlab中画出其概率密度函数分布图和累积分布图。（自行尝试a和b的不同取值）  
 思路：  
-使用反变换法，将(0,1)均匀分布随机数带入Pareto累积分布函数的反函数，即可得到符合Pareto分布的随机变量数据。其反函数为：
+使用反变换法，将(0,1)均匀分布随机数带入Pareto累积分布函数的反函数，即可得到符合Pareto分布的随机变量数据。其反函数为：  
 $$
 x=\frac{b}{(1-y)^{\frac{1}{a}}}, y \leq 1
 $$
@@ -137,7 +137,7 @@ rand_Pareto = b / pow(1-rand01,1/a);
 ```
 ### 3 4 高斯分布
 基础知识：  
-均值为a，方差为b^2的高斯分布：
+均值为a，方差为b^2的高斯分布：  
 $$
 f(x)=\frac{1}{\sqrt{2 \pi} b} \exp \left(-\frac{(x-a)^{2}}{2 b^{2}}\right)
 $$

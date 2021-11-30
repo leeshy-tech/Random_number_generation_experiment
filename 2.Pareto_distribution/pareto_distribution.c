@@ -17,7 +17,7 @@
 	*						其反函数为      x = b / ( (1-y)^(1/a) )   [y<=1]	
 	*			3> 利用matlab程序做数据分析时要注意Pareto分布参数a，b一致
 	*
-	* @version  final  2021/10/31
+	* @version  final  2021/11/30
 	*
 	* @date     2021/10/28 星期四
 */ 
@@ -28,9 +28,16 @@
 
 #define data_file "..\\data\\pareto_distribution.txt"
 
-int main(){
+double Pareto(){
 	double a = 3.0,b = 5.0;//Pareto分布参数
 	double rand01,rand_Pareto;
+	rand01 = genrand_real3();
+	rand_Pareto = b / pow(1-rand01,1/a);
+	return rand_Pareto;
+}
+
+int main(){
+	
 	//从用户获得生成随机数的数量
 	int number = 0;
     printf("input the number of random numbers: ");
@@ -43,12 +50,9 @@ int main(){
     if (fp == NULL) printf("fail to open the data.text,program interrupted.");
     else {
 		for (int i=1;i<=number;i++){
-			rand01 = genrand_real3();
-			rand_Pareto = b / pow(1-rand01,1/a);
-
 			//将double类型转化为字符串，因为文件不能直接写入double类型
 			char string_rand_Pareto[50] = {0};
-			gcvt(rand_Pareto,16,string_rand_Pareto);
+			gcvt(Pareto(),16,string_rand_Pareto);
 
 			//将随机数存储在文件中，每行一个
 			fputs(string_rand_Pareto,fp);
